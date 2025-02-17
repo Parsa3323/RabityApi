@@ -1,0 +1,4 @@
+name: RabityApi
+version: '${project.version}'
+main: ir.rabity.api.RabityApi
+api-version: '1.17'
