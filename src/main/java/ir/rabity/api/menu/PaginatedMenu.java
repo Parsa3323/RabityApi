@@ -11,16 +11,12 @@ import java.util.List;
 
 public abstract class PaginatedMenu extends Menu {
 
-    //The items being paginated
     protected List<Object> data;
 
-    //Keep track of what page the menu is on
     protected int page = 0;
-    //28 is max items because with the border set below,
-    //28 empty slots are remaining.
+
     protected int maxItemsPerPage = 28;
 
-    // Add cache field
     private List<ItemStack> cachedItems;
 
     public PaginatedMenu(PlayerMenuUtility playerMenuUtility) {
@@ -43,15 +39,15 @@ public abstract class PaginatedMenu extends Menu {
      * Set the border and menu buttons for the menu. Override this method to provide a custom menu border or specify custom items in customMenuBorderItems()
      */
     protected void addMenuBorder() {
-        // First page button
+
         inventory.setItem(47, makeItem(Material.DARK_OAK_BUTTON, ChatColor.GREEN + "First Page"));
-        // Previous page button
+
         inventory.setItem(48, makeItem(Material.DARK_OAK_BUTTON, ChatColor.GREEN + "Previous"));
-        // Close button
+
         inventory.setItem(49, makeItem(Material.BARRIER, ChatColor.DARK_RED + "Close"));
-        // Next page button
+
         inventory.setItem(50, makeItem(Material.DARK_OAK_BUTTON, ChatColor.GREEN + "Next"));
-        // Last page button
+
         inventory.setItem(51, makeItem(Material.DARK_OAK_BUTTON, ChatColor.GREEN + "Last Page"));
 
         for (int i = 0; i < 10; i++) {
@@ -152,16 +148,16 @@ public abstract class PaginatedMenu extends Menu {
     }
 
     public int getCurrentPage() {
-        return page + 1; // Convert to 1-based page numbers for display
+        return page + 1;
     }
 
     public int getTotalPages() {
-        return ((getItems().size() - 1) / maxItemsPerPage) + 1; // Use cached items
+        return ((getItems().size() - 1) / maxItemsPerPage) + 1;
     }
 
     @Override
     public void open() {
-        invalidateCache(); // Force items to be reloaded when menu opens
+        invalidateCache();
         super.open();
     }
 

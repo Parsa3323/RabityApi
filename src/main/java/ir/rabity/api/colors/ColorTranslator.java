@@ -20,9 +20,6 @@ public class ColorTranslator {
      * @return Returns a string of text with color/effects applied
      */
     public static String translateColorCodes(@NotNull String text) {
-        //good thing we're stuck on java 8, which means we can't use this (:
-        // String hexColored = HEX_PATTERN.matcher(text)
-        //      .replaceAll(match -> "" + ChatColor.of(match.group(1)));
         Matcher matcher = HEX_PATTERN.matcher(text);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
@@ -41,9 +38,6 @@ public class ColorTranslator {
      * @return the TextComponent with hex colors and regular colors
      */
     public static TextComponent translateColorCodesToTextComponent(@NotNull String text) {
-        //This is done solely to ensure hex color codes are in the format
-        //fromLegacyText expects:
-        //&#FF0000 -> &x&f&f&0&0&0&0
         String colored = translateColorCodes(text);
 
         TextComponent base = new TextComponent();

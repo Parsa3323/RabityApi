@@ -16,7 +16,6 @@ import java.util.HashMap;
  */
 public class MenuManager {
 
-    //each player will be assigned their own PlayerMenuUtility object
     private static final HashMap<Player, PlayerMenuUtility> playerMenuUtilityMap = new HashMap<>();
     private static boolean isSetup = false;
 
@@ -70,15 +69,15 @@ public class MenuManager {
         }
 
         PlayerMenuUtility playerMenuUtility;
-        if (!(playerMenuUtilityMap.containsKey(p))) { //See if the player has a pmu "saved" for them
+        if (!(playerMenuUtilityMap.containsKey(p))) {
 
-            //Construct PMU
+
             playerMenuUtility = new PlayerMenuUtility(p);
             playerMenuUtilityMap.put(p, playerMenuUtility);
 
             return playerMenuUtility;
         } else {
-            return playerMenuUtilityMap.get(p); //Return the object by using the provided player
+            return playerMenuUtilityMap.get(p);
         }
     }
 
