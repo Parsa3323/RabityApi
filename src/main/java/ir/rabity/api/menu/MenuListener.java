@@ -18,7 +18,8 @@ public class MenuListener implements Listener {
 
         InventoryHolder holder = e.getInventory().getHolder();
 
-        if (holder instanceof Menu menu) {
+        if (holder instanceof Menu) {
+            Menu menu = (Menu) holder;
             if (e.getCurrentItem() == null) {
                 return;
             }
@@ -43,7 +44,8 @@ public class MenuListener implements Listener {
     public void onMenuClose(InventoryCloseEvent e) {
         InventoryHolder holder = e.getInventory().getHolder();
 
-        if (holder instanceof Menu menu) {
+        if (holder instanceof Menu) {
+            Menu menu = (Menu) holder;
             menu.handleMenuClose();
         }
     }
